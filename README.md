@@ -2,15 +2,23 @@
 
 ## Instrucciones
 
-### 1. Compilar TodoApi y TodoMCPServer
+### 1. Compilar TodoApi
+
+Para la base de datos se utiliza devcontainers, es necesario preparar la base de datos antes de comenzar y correr el siguiente comando dentro del contenedor:
 
 `dotnet build`
-
 ### 2. Ejecutar TodoApi
+También dentro del contenedor, ejecutar:
 
 `dotnet run --project TodoApi`
 
-### 3. Configurar IA
+### 3. Compilar TodoMCPServer
+
+El siguiente comando no se debe correr dentro del contenedor:
+
+`dotnet build`
+
+### 4. Configurar IA
 Para probarlo en Claude Desktop se debe editar el archivo 'claude_desktop_config.json'.
 
 Para más información, véase sección "Testing your server with Claude for Desktop" del siguiente [Link](https://modelcontextprotocol.io/quickstart/server#c).
@@ -35,7 +43,7 @@ Ejemplo configuración en Windows:
 La ruta será algo como: C:\\\...\\\dotnet-interview\\\TodoMCPServer
 
 > [!IMPORTANT]
->- Para la base datos se utiliza devcontainers.
+>- Antes de correr TodoApi por primera vez, es probable que debas generar un certificado autofirmado para que puedas usar https://localhost.
 >- Si la API no corre en localhost:5083, se debe editar Program.cs en TodoMPCServer y cambiar la URL manualmente.
 
 ## Explicación
