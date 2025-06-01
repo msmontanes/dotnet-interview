@@ -12,23 +12,27 @@
 
 ### 3. Configurar IA
 Para probarlo en Claude Desktop se debe editar el archivo 'claude_desktop_config.json'.
+
 Para más información, véase sección "Testing your server with Claude for Desktop" del siguiente [Link](https://modelcontextprotocol.io/quickstart/server#c).
 
 Ejemplo configuración en Windows:
-    ```json
-        "mcpServers": {
-            "todo": {
-                "command": "dotnet",
-                "args": [
-                    "run",
-                    "--project",
-                    "C:\\ABSOLUTE\\PATH\\TO\\PROJECT",
-                    "--no-build"
-                ]
-            }
+```json
+{
+    "mcpServers": {
+        "todo": {
+            "command": "dotnet",
+            "args": [
+                "run",
+                "--project",
+                "C:\\ABSOLUTE\\PATH\\TO\\PROJECT",
+                "--no-build"
+            ]
         }
-    ```
-La ruta será algo como: C:\\...\\dotnet-interview\\TodoMCPServer
+    }
+}
+ ```
+
+La ruta será algo como: C:\\\...\\\dotnet-interview\\\TodoMCPServer
 
 > [!IMPORTANT]
 >- Para la base datos se utiliza devcontainers.
@@ -44,16 +48,18 @@ Se agregan/modifican los siguientes archivos:
 - Data (TodoContext.cs) y Migrations: Se actualizan para soportar la persistencia de Items.
 
 > [!NOTE]
-> Se toma como referencia los casos de pruebas propuestos en (https://github.com/crunchloop/interview-tests) para determinar el comportamiento de los nuevos endpoints.
+> Para determinar el comportamiento de los nuevos endpoints, se toma como referencia los casos de pruebas propuestos en: https://github.com/crunchloop/interview-tests 
 
 ### TodoMPCServer
 
-Se exponen los siguientes tools para listas (TodoList.cs) y items (TodoItemTools.cs):
+Se exponen los siguientes tools para listas (TodoListTools.cs) y items (TodoItemTools.cs):
+
 - GetTodoLists: Devuelve todas las listas en el sistema.
 - PostTodoList: Crea una lista. Requiere el nombre de la lista.
 - UpdateTodoList: Cambiar nombre de una lista. Requiere nombre actual de la lista y nuevo nombre.
 - DeleteTodoList: Elimina una lista. Requiere nombre de la lista.
-
+<!-- -->
+  
 - PostTodoItem: Crear un ítem. Requiere nombre de lista y descripción del item.
 - GetTodoItems: Devuelve items de una lista. Requiere nombre de la lista.
 - CompleteTodoItem: Marca como finalizado un item. Requiere nombre de lista y descripción del item.
@@ -61,6 +67,7 @@ Se exponen los siguientes tools para listas (TodoList.cs) y items (TodoItemTools
 - DeleteTodoItem: Elimina un item. Requiere nombre de lista y descripción de item.
 
 ## Pruebas
+
 A modo de ejemplo, se pueden usar los siguientes prompts para probar el comportamiento de los nuevos endpoints:
 
 1. Crear lista con nombre 'Trabajo'. 
