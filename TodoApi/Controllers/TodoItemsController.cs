@@ -66,6 +66,8 @@ namespace TodoApi.Controllers
 
             _context.Add(todoItem);
 
+            todoList.ToDoItems.Add(todoItem);
+
             await _context.SaveChangesAsync();
             
             return CreatedAtAction(nameof(GetTodoItem), new { todoListId = todoList.Id, todoItemId = todoItem.Id }, todoItem);
